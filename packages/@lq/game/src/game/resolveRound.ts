@@ -5,8 +5,7 @@ import {
   determineWinner,
   applyFactionEffects,
   calculateFinalDamage,
-  calculateNewPlayerState,
-  type Winner
+  calculateNewPlayerState
 } from './utils';
 
 /**

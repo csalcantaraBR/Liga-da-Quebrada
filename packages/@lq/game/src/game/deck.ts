@@ -97,7 +97,6 @@ function shuffleDeckKnuth(deck: Card[], seed?: number): Card[] {
  */
 function shuffleDeckCustom(deck: Card[], seed?: number): Card[] {
   const shuffled = [...deck];
-  const random = seed !== undefined ? createSeededRandom(seed) : Math.random;
   
   // Separa cartas por poder
   const lowPower = shuffled.filter(card => card.power <= 3);

@@ -1,4 +1,4 @@
-import { Card, PlayerState, RoundResult, GameState } from '@lq/shared';
+import { Card, PlayerState, RoundResult } from '@lq/shared';
 
 export interface RoundInput {
   player1Card: Card;

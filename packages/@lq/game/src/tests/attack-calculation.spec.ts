@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { resolveRound } from '../game/resolveRound';
-import { Card, PlayerState, RoundResult } from '@lq/shared';
+import { Card } from '@lq/shared';
 import { RoundInput, RoundContext } from '../types';
 
 describe('resolveRound - Cálculo de Ataque', () => {
