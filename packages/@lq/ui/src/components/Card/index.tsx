@@ -238,15 +238,7 @@ export const Card: React.FC<CardProps> = ({
     return null;
   };
 
-  // Função para lidar com eventos de teclado
-  const handleKeyDown = (event: any) => {
-    if (event.key === 'Enter' || event.key === ' ') {
-      event.preventDefault();
-      if (onPress && !disabled) {
-        onPress();
-      }
-    }
-  };
+
 
   return (
     <View style={{ position: 'relative' }}>

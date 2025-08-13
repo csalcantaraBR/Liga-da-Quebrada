@@ -12,12 +12,16 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 'latest',
     sourceType: 'module',
+    ecmaFeatures: {
+      jsx: true,
+    },
   },
   plugins: [
     '@typescript-eslint',
   ],
   rules: {
     'no-unused-vars': 'off',
+    'no-undef': 'off', // Desabilitar temporariamente para React
     '@typescript-eslint/no-unused-vars': 'error',
     '@typescript-eslint/no-explicit-any': 'warn',
     '@typescript-eslint/explicit-function-return-type': 'off',

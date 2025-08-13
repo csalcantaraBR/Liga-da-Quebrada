@@ -2,7 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { View, Text, TouchableOpacity } from 'react-native';
 import { Card as CardType } from '@lq/shared';
 import { tokens } from '../../tokens';
-import { useAnimation, SlideDirection } from '../../hooks/useAnimation';
+import { useAnimation } from '../../hooks/useAnimation';
 
 interface AnimatedCardProps {
   card: CardType;

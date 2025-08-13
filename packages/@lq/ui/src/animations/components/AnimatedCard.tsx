@@ -30,7 +30,7 @@ export const AnimatedCard: React.FC<AnimatedCardProps> = ({
   disabled = false,
   className = '',
 }) => {
-  const { isAnimating, startAnimation } = useAnimation({
+  const { startAnimation } = useAnimation({
     duration: 300,
     easing: 'easeInOut',
   });

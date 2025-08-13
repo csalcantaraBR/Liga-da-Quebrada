@@ -74,7 +74,7 @@ export const useGameIntegration = (roomId: string): UseGameIntegrationReturn => 
     setGameState(prev => ({ ...prev, energy: clampedEnergy }));
   }, []);
 
-  const playCard = useCallback(async (cardId: string) => {
+  const playCard = useCallback(async () => {
     if (!isConnected) return;
 
     try {
