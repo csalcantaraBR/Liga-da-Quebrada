@@ -6,7 +6,7 @@ import React from 'react';
 vi.mock('react-native', () => ({
   View: 'div',
   Text: 'span',
-  TouchableOpacity: ({ children, onPress, accessible, accessibilityLabel, accessibilityRole, accessibilityState, ...props }: any) => {
+  TouchableOpacity: ({ children, onPress, accessibilityLabel, accessibilityRole, accessibilityState, ...props }: any) => {
     // Convert React Native props to web equivalents
     const webProps = {
       ...props,

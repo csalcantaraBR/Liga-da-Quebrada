@@ -24,8 +24,6 @@ export const AnimatedCard: React.FC<AnimatedCardProps> = ({
   onCardClick,
   onHoverStart,
   onHoverEnd,
-  animateEntrance = false,
-  animateHover = false,
   animateClick = false,
   disabled = false,
   className = '',

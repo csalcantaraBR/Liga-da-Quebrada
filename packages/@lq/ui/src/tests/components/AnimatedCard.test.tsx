@@ -273,7 +273,6 @@ describe('AnimatedCard Component - Performance', () => {
     const { rerender } = render(<AnimatedCard card={mockCard} />);
     
     const cardElement = screen.getByTestId('animated-card');
-    const initialRender = cardElement.getAttribute('data-render-count');
     
     rerender(<AnimatedCard card={mockCard} />);
     

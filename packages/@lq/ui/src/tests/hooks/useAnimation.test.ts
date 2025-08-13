@@ -343,7 +343,6 @@ describe('useAnimation Hook - Performance', () => {
   it('should not trigger unnecessary re-renders', () => {
     const { result, rerender } = renderHook(() => useAnimation());
     
-    const initialRenderCount = 1;
     let renderCount = 0;
     
     rerender();
