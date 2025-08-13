@@ -1,7 +1,7 @@
 import { createClient, SupabaseClient } from '@supabase/supabase-js';
 import jwt from 'jsonwebtoken';
 import bcrypt from 'bcryptjs';
-import { User, AuthCredentials, RegisterData, AuthResponse, JWTPayload } from '../types/auth';
+import { User, AuthCredentials, RegisterData, JWTPayload } from '../types/auth';
 
 interface AuthResult {
   success: boolean;

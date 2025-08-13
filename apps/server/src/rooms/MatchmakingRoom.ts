@@ -1,5 +1,5 @@
 import { Room, Client } from 'colyseus';
-import { MatchmakingState, Player, MatchmakingMessage } from '../types/rooms';
+import { MatchmakingState, Player } from '../types/rooms';
 
 export class MatchmakingRoom extends Room<MatchmakingState> {
   private matchmakingTimeout: NodeJS.Timeout | null = null;
@@ -20,17 +20,17 @@ export class MatchmakingRoom extends Room<MatchmakingState> {
     });
 
     // Configurar handlers de mensagem
-    this.onMessage('ready', (client, message) => {
+    this.onMessage('ready', (client) => {
       console.log('📨 [MatchmakingRoom] Mensagem "ready" recebida de:', client.sessionId);
-      this.handleReady(client, message);
+      this.handleReady(client);
     });
-    this.onMessage('cancel', (client, message) => {
+    this.onMessage('cancel', (client) => {
       console.log('📨 [MatchmakingRoom] Mensagem "cancel" recebida de:', client.sessionId);
-      this.handleCancel(client, message);
+      this.handleCancel(client);
     });
-    this.onMessage('find-match', (client, message) => {
+    this.onMessage('find-match', (client) => {
       console.log('📨 [MatchmakingRoom] Mensagem "find-match" recebida de:', client.sessionId);
-      this.handleFindMatch(client, message);
+      this.handleFindMatch();
     });
   }
 
@@ -67,7 +67,7 @@ export class MatchmakingRoom extends Room<MatchmakingState> {
     }
   }
 
-  onLeave(client: Client, consented: boolean) {
+  onLeave(client: Client) {
     console.log(client.sessionId, 'left matchmaking!');
 
     // Remover jogador da fila
@@ -92,14 +92,14 @@ export class MatchmakingRoom extends Room<MatchmakingState> {
     }
   }
 
-  private handleReady(client: Client, message: MatchmakingMessage) {
+  private handleReady(client: Client) {
     const player = this.state.players.find(p => p.sessionId === client.sessionId);
     if (player) {
       player.status = 'ready';
     }
   }
 
-  private handleCancel(client: Client, message: MatchmakingMessage) {
+  private handleCancel(client: Client) {
     console.log('🚫 [MatchmakingRoom] handleCancel - Cancelamento de:', client.sessionId);
     console.log('📊 [MatchmakingRoom] handleCancel - Estado antes:', {
       players: this.state.players.length,
@@ -124,7 +124,7 @@ export class MatchmakingRoom extends Room<MatchmakingState> {
     });
   }
 
-  private handleFindMatch(client: Client, message: MatchmakingMessage) {
+  private handleFindMatch() {
     this.startMatchmaking();
   }
 
@@ -217,7 +217,7 @@ export class MatchmakingRoom extends Room<MatchmakingState> {
 
   // Método para testes - simular cancelamento
   public simulateCancel(sessionId: string) {
-    this.handleCancel({ sessionId } as any, { type: 'cancel' });
+    this.handleCancel({ sessionId } as any);
   }
 
   // Método para testes - simular mensagens
@@ -230,13 +230,13 @@ export class MatchmakingRoom extends Room<MatchmakingState> {
     // Chamar o handler apropriado baseado no tipo da mensagem
     switch (message.type) {
       case 'ready':
-        this.handleReady(client, message);
+        this.handleReady(client);
         break;
       case 'cancel':
-        this.handleCancel(client, message);
+        this.handleCancel(client);
         break;
       case 'find-match':
-        this.handleFindMatch(client, message);
+        this.handleFindMatch();
         break;
       default:
         console.log('❌ [MatchmakingRoom] simulateMessage - Tipo de mensagem desconhecido:', message.type);

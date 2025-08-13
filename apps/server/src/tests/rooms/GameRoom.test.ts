@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { GameRoom } from '../../rooms/GameRoom';
-import { Client } from 'colyseus';
 
 // Mock do Client
 const mockClient = {
@@ -239,7 +238,7 @@ describe('GameRoom', () => {
       gameRoom.onJoin(player2Client, { faction: 'motofrete-uniao' });
 
       // Simular desconexão do player1
-      gameRoom.onLeave(player1Client, false);
+      gameRoom.onLeave(player1Client);
 
       expect(gameRoom.state.status).toBe('finished');
       expect(gameRoom.state.winner).toBe('player2');

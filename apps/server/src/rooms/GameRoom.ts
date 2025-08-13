@@ -60,7 +60,7 @@ export class GameRoom extends Room<GameState> {
     }
 
     // Configurar handlers de mensagem
-    this.onMessage('ready', (client, message) => {
+    this.onMessage('ready', (client) => {
       console.log('📨 [GameRoom] Mensagem "ready" recebida de:', client.sessionId);
       this.handleReady(client);
     });
@@ -68,13 +68,13 @@ export class GameRoom extends Room<GameState> {
       console.log('📨 [GameRoom] Mensagem "play-card" recebida de:', client.sessionId);
       this.handlePlayCard(client, message);
     });
-    this.onMessage('end-turn', (client, message) => {
+    this.onMessage('end-turn', (client) => {
       console.log('📨 [GameRoom] Mensagem "end-turn" recebida de:', client.sessionId);
-      this.handleEndTurn(client, message);
+      this.handleEndTurn(client);
     });
-    this.onMessage('concede', (client, message) => {
+    this.onMessage('concede', (client) => {
       console.log('📨 [GameRoom] Mensagem "concede" recebida de:', client.sessionId);
-      this.handleConcede(client, message);
+      this.handleConcede(client);
     });
     
     console.log('🎮 [GameRoom] onCreate - Sala criada com sucesso');
@@ -181,7 +181,7 @@ export class GameRoom extends Room<GameState> {
     }
   }
 
-  private handleEndTurn(client: Client, message: GameMessage) {
+  private handleEndTurn(client: Client) {
     console.log('🔄 [GameRoom] handleEndTurn - Recebido de:', client.sessionId);
     console.log('📊 [GameRoom] handleEndTurn - Estado atual:', {
       currentTurn: this.state.currentTurn,
@@ -215,7 +215,7 @@ export class GameRoom extends Room<GameState> {
     }
   }
 
-  private handleConcede(client: Client, message: GameMessage) {
+  private handleConcede(client: Client) {
     console.log('🏳️ [GameRoom] handleConcede - Concessão de:', client.sessionId);
     console.log('📊 [GameRoom] handleConcede - Estado atual:', {
       status: this.state.status,
@@ -371,7 +371,7 @@ export class GameRoom extends Room<GameState> {
     // Simular 4 rodadas completas
     for (let i = 0; i < 4; i++) {
       this.state.players.forEach(player => {
-        this.handleEndTurn({ sessionId: player.sessionId } as any, { type: 'end-turn' });
+        this.handleEndTurn({ sessionId: player.sessionId } as any);
       });
     }
   }
@@ -412,10 +412,10 @@ export class GameRoom extends Room<GameState> {
         this.handlePlayCard(client, message);
         break;
       case 'end-turn':
-        this.handleEndTurn(client, message);
+        this.handleEndTurn(client);
         break;
       case 'concede':
-        this.handleConcede(client, message);
+        this.handleConcede(client);
         break;
       default:
         console.log('❌ [GameRoom] simulateMessage - Tipo de mensagem desconhecido:', message.type);

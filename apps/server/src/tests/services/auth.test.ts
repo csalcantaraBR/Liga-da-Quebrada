@@ -1,6 +1,6 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { AuthService } from '../../services/auth';
-import { User, AuthCredentials, RegisterData, AuthResponse } from '../../types/auth';
+import { AuthCredentials, RegisterData } from '../../types/auth';
 
 // Mock do JWT
 vi.mock('jsonwebtoken', () => ({
@@ -65,13 +65,6 @@ vi.mock('@supabase/supabase-js', () => ({
 
 describe('AuthService', () => {
   let authService: AuthService;
-  const mockUser: User = {
-    id: 'user-1',
-    username: 'testuser',
-    email: 'test@example.com',
-    createdAt: new Date('2024-01-01'),
-    lastActive: new Date()
-  };
 
   beforeEach(() => {
     authService = new AuthService();

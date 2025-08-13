@@ -1,6 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { MatchmakingRoom } from '../../rooms/MatchmakingRoom';
-import { Client } from 'colyseus';
 
 // Mock do Client
 const mockClient = {
@@ -126,7 +125,7 @@ describe('MatchmakingRoom', () => {
 
       expect(matchmakingRoom.state.players.length).toBe(1);
 
-      matchmakingRoom.onLeave(mockClient, true);
+      matchmakingRoom.onLeave(mockClient);
 
       expect(matchmakingRoom.state.players.length).toBe(0);
     });
@@ -140,8 +139,8 @@ describe('MatchmakingRoom', () => {
       matchmakingRoom.onJoin(secondClient, { faction: 'motofrete-uniao' });
 
       // Remover todos os jogadores
-      matchmakingRoom.onLeave(mockClient, true);
-      matchmakingRoom.onLeave(secondClient, true);
+      matchmakingRoom.onLeave(mockClient);
+      matchmakingRoom.onLeave(secondClient);
 
       expect(matchmakingRoom.state.status).toBe('waiting');
     });
@@ -175,7 +174,7 @@ describe('MatchmakingRoom', () => {
       matchmakingRoom.onCreate({ maxPlayers: 2 });
       matchmakingRoom.onJoin(mockClient, { faction: 'roda-de-ginga' });
 
-      matchmakingRoom.onMessage(mockClient, { type: 'ready' });
+      matchmakingRoom.simulateMessage(mockClient, { type: 'ready' });
 
       const player = matchmakingRoom.state.players.find(p => p.sessionId === 'test-session-1');
       expect(player?.status).toBe('ready');
