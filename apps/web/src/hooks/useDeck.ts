@@ -119,7 +119,7 @@ export function useDeck(): UseDeckReturn {
     setError(null);
 
     try {
-      const generatedDeck = generateBalancedDeck(selectedFaction, MAX_DECK_SIZE);
+      const generatedDeck = generateBalancedDeck(selectedFaction);
       setDeck(generatedDeck);
     } catch (err) {
       setError('Erro ao gerar deck');

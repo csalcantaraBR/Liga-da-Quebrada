@@ -29,7 +29,9 @@ export default function MatchmakingPage() {
           </p>
         </header>
 
-        <MatchmakingQueue style={{ marginBottom: '32px' }} />
+        <div style={{ marginBottom: '32px' }}>
+          <MatchmakingQueue />
+        </div>
 
         <div style={{
           backgroundColor: 'white',

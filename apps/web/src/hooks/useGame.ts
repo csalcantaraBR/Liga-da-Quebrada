@@ -94,9 +94,9 @@ export function useGame(
       const result = playCard(card, currentPlayer, opponentPlayer);
 
       // Atualiza o estado do jogo
-      const updatedGameState = {
+      const updatedGameState: GameState = {
         ...gameState,
-        players: [result.player, result.opponent],
+        players: [result.player, result.opponent] as [Player, Player],
         lastActionTime: new Date()
       };
 

@@ -42,7 +42,7 @@ describe('DeckBuilder Component', () => {
       'bateria-central',
       'guardioes-do-verde',
       'vaqueiros-do-sertao'
-    ],
+    ] as Faction[],
     selectFaction: vi.fn(),
     clearFaction: vi.fn(),
     addCard: vi.fn(),
