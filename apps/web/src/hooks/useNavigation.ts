@@ -130,7 +130,7 @@ export function useNavigation(): NavigationState & NavigationActions {
   }, [router]);
 
   const canGoBack = useCallback(() => {
-    return history.length > 0 || window.history.length > 1;
+    return history.length > 0;
   }, [history]);
 
   return {

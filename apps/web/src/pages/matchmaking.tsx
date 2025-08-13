@@ -1,6 +1,7 @@
 import React from 'react';
 import { Navigation } from '../components/Navigation';
 import { MatchmakingQueue } from '../components/MatchmakingQueue';
+import { ClientOnly } from '../components/ClientOnly';
 
 export default function MatchmakingPage() {
   return (
@@ -30,7 +31,26 @@ export default function MatchmakingPage() {
         </header>
 
         <div style={{ marginBottom: '32px' }}>
-          <MatchmakingQueue />
+          <ClientOnly fallback={
+            <div style={{
+              backgroundColor: 'white',
+              padding: '48px',
+              borderRadius: '16px',
+              boxShadow: '0 4px 8px rgba(0, 0, 0, 0.1)',
+              textAlign: 'center'
+            }}>
+              <div style={{ fontSize: '64px', marginBottom: '24px' }}>⚔️</div>
+              <h2 style={{
+                fontSize: '28px',
+                color: '#0A2A66',
+                marginBottom: '16px'
+              }}>
+                Carregando...
+              </h2>
+            </div>
+          }>
+            <MatchmakingQueue />
+          </ClientOnly>
         </div>
 
         <div style={{

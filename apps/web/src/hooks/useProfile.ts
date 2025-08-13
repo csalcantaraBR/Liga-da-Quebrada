@@ -92,9 +92,17 @@ export function useProfile(): UseProfileReturn {
   const [gameHistory, setGameHistory] = useState<GameResult[]>([]);
   const [isLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  // Verificar se estamos no cliente
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Carregar perfil do localStorage na inicialização
   useEffect(() => {
+    if (!isClient) return;
+    
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
         const savedProfile = localStorage.getItem(STORAGE_KEY);
@@ -113,7 +121,7 @@ export function useProfile(): UseProfileReturn {
     } catch (err) {
       setError('Erro ao carregar perfil');
     }
-  }, []);
+  }, [isClient]);
 
   // Limpar erro após 3 segundos
   useEffect(() => {
@@ -124,6 +132,8 @@ export function useProfile(): UseProfileReturn {
   }, [error]);
 
   const saveProfile = useCallback(() => {
+    if (!isClient) return;
+    
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
         const profileToSave = {
@@ -136,7 +146,7 @@ export function useProfile(): UseProfileReturn {
     } catch (err) {
       setError('Erro ao salvar perfil');
     }
-  }, [profile]);
+  }, [profile, isClient]);
 
   const updateUsername = useCallback((username: string) => {
     if (!username.trim()) {
@@ -328,6 +338,8 @@ export function useProfile(): UseProfileReturn {
     setProfile(defaultProfile);
     setError(null);
     
+    if (!isClient) return;
+    
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.removeItem(STORAGE_KEY);
@@ -335,7 +347,7 @@ export function useProfile(): UseProfileReturn {
     } catch (err) {
       setError('Erro ao resetar perfil');
     }
-  }, []);
+  }, [isClient]);
 
   return {
     // Estado

@@ -58,8 +58,14 @@ export function useDeck(): UseDeckReturn {
   const [selectedFaction, setSelectedFaction] = useState<Faction | null>(null);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [isClient, setIsClient] = useState(false);
 
   const availableFactions = VALID_FACTIONS;
+
+  // Verificar se estamos no cliente
+  useEffect(() => {
+    setIsClient(true);
+  }, []);
 
   // Limpar erro após 3 segundos
   useEffect(() => {
@@ -188,6 +194,8 @@ export function useDeck(): UseDeckReturn {
   }, [deck]);
 
   const saveDeck = useCallback(() => {
+    if (!isClient) return;
+    
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
         localStorage.setItem(STORAGE_KEY, JSON.stringify(deck));
@@ -196,9 +204,11 @@ export function useDeck(): UseDeckReturn {
     } catch (err) {
       setError('Erro ao salvar deck');
     }
-  }, [deck]);
+  }, [deck, isClient]);
 
   const loadDeck = useCallback(() => {
+    if (!isClient) return;
+    
     try {
       if (typeof window !== 'undefined' && window.localStorage) {
         const savedDeck = localStorage.getItem(STORAGE_KEY);
@@ -216,7 +226,7 @@ export function useDeck(): UseDeckReturn {
     } catch (err) {
       setError('Erro ao carregar deck');
     }
-  }, []);
+  }, [isClient]);
 
   return {
     // Estado
