@@ -62,7 +62,7 @@ export class GameRoom extends Room<GameState> {
     // Configurar handlers de mensagem
     this.onMessage('ready', (client, message) => {
       console.log('📨 [GameRoom] Mensagem "ready" recebida de:', client.sessionId);
-      this.handleReady(client, message);
+      this.handleReady(client);
     });
     this.onMessage('play-card', (client, message) => {
       console.log('📨 [GameRoom] Mensagem "play-card" recebida de:', client.sessionId);
@@ -113,7 +113,7 @@ export class GameRoom extends Room<GameState> {
     }
   }
 
-  onLeave(client: Client, consented: boolean) {
+  onLeave(client: Client) {
     console.log(client.sessionId, 'left game!');
 
     // Se o jogo não terminou, finalizar com vitória do oponente
@@ -136,7 +136,7 @@ export class GameRoom extends Room<GameState> {
     }
   }
 
-  private handleReady(client: Client, message: GameMessage) {
+  private handleReady(client: Client) {
     console.log('✅ [GameRoom] handleReady - Recebido de:', client.sessionId);
     console.log('📊 [GameRoom] handleReady - Estado atual:', {
       status: this.state.status,
@@ -406,7 +406,7 @@ export class GameRoom extends Room<GameState> {
     // Chamar o handler apropriado baseado no tipo da mensagem
     switch (message.type) {
       case 'ready':
-        this.handleReady(client, message);
+        this.handleReady(client);
         break;
       case 'play-card':
         this.handlePlayCard(client, message);
