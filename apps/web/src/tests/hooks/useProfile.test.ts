@@ -1,7 +1,7 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useProfile } from '../../hooks/useProfile';
-import { Profile, Achievement, GameResult } from '../../game/types';
+import { Profile, GameResult } from '../../game/types';
 
 // Mock do localStorage
 const mockLocalStorage = {
@@ -30,14 +30,7 @@ describe('useProfile Hook', () => {
     lastActive: new Date()
   };
 
-  const mockAchievement: Achievement = {
-    id: 'first-win',
-    name: 'Primeira Vitória',
-    description: 'Ganhe sua primeira partida',
-    icon: '🏆',
-    unlockedAt: new Date(),
-    category: 'combat'
-  };
+
 
   beforeEach(() => {
     vi.clearAllMocks();

@@ -43,44 +43,7 @@ export const CardAnimations: React.FC<CardAnimationsProps> = ({
     }
   };
 
-  // Animações de hover
-  const hoverVariants = {
-    hover: {
-      y: -10,
-      scale: 1.05,
-      transition: {
-        duration: 0.2,
-        ease: "easeInOut" as const
-      }
-    },
-    tap: {
-      scale: 0.95,
-      transition: {
-        duration: 0.1
-      }
-    }
-  };
 
-  // Animações de estado
-  const selectedVariants = {
-    selected: {
-      boxShadow: "0 0 20px rgba(255, 215, 0, 0.6)",
-      scale: 1.1,
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
-
-  const disabledVariants = {
-    disabled: {
-      opacity: 0.5,
-      filter: "grayscale(100%)",
-      transition: {
-        duration: 0.3
-      }
-    }
-  };
 
   // Animações de tooltip
   const tooltipVariants = {

@@ -15,14 +15,7 @@ const FACTION_NAMES: Record<Faction, string> = {
   'vaqueiros-do-sertao': 'Vaqueiros do Sertão'
 };
 
-const FACTION_COLORS: Record<Faction, string> = {
-  'roda-de-ginga': 'bg-yellow-600',
-  'motofrete-uniao': 'bg-blue-600',
-  'crew-do-graffiti': 'bg-purple-600',
-  'bateria-central': 'bg-red-600',
-  'guardioes-do-verde': 'bg-green-600',
-  'vaqueiros-do-sertao': 'bg-orange-600'
-};
+
 
 const ACHIEVEMENT_CATEGORIES = [
   { id: 'combat', name: 'Combate', icon: '⚔️' },

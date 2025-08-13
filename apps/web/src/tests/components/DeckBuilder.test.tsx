@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, fireEvent, waitFor } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import { DeckBuilder } from '../../components/DeckBuilder';
 import * as useDeckModule from '../../hooks/useDeck';
 import { Card, Faction } from '../../game/types';

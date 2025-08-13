@@ -7,8 +7,7 @@ import {
   canPlayCard,
   getCurrentPlayer,
   getOpponentPlayer,
-  canGameContinue,
-  GAME_CONSTANTS
+  canGameContinue
 } from '../game/mechanics';
 import { generateBalancedDeck } from '../game/cards';
 
@@ -35,7 +34,6 @@ export function useGame(
   const [error, setError] = useState<string | null>(null);
   
   const playerIdRef = useRef(playerId);
-  const matchIdRef = useRef(matchId);
 
   // Inicializa o jogo
   const initializeGameState = useCallback(async () => {

@@ -1,4 +1,4 @@
-import { GameState, Player, Card, Effect, Faction } from './types';
+import { GameState, Player, Card, Effect } from './types';
 
 // Constantes do jogo
 export const GAME_CONSTANTS = {
@@ -79,8 +79,7 @@ export function canPlayCard(card: Card, player: Player): boolean {
 export function playCard(
   card: Card,
   player: Player,
-  opponent: Player,
-  position?: number
+  opponent: Player
 ): { player: Player; opponent: Player; effects: GameEffect[] } {
   if (!canPlayCard(card, player)) {
     throw new Error('Não é possível jogar esta carta');

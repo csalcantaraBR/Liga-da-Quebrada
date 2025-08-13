@@ -1,6 +1,6 @@
 import { useState, useCallback, useEffect } from 'react';
 import { Card, Faction } from '../game/types';
-import { generateBalancedDeck, getCardsByFaction, validateDeck, calculateDeckStats } from '../game/cards';
+import { generateBalancedDeck } from '../game/cards';
 
 export interface DeckStats {
   cardCount: number;

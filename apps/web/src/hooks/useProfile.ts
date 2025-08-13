@@ -90,7 +90,7 @@ function calculateWinRate(wins: number, totalGames: number): number {
 export function useProfile(): UseProfileReturn {
   const [profile, setProfile] = useState<Profile>(createDefaultProfile());
   const [gameHistory, setGameHistory] = useState<GameResult[]>([]);
-  const [isLoading, setIsLoading] = useState(false);
+  const [isLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
   // Carregar perfil do localStorage na inicialização
@@ -175,7 +175,6 @@ export function useProfile(): UseProfileReturn {
   }, []);
 
   const getXPNeededForNextLevel = useCallback(() => {
-    const currentLevelXP = (profile.level - 1) * XP_PER_LEVEL;
     const nextLevelXP = profile.level * XP_PER_LEVEL;
     return nextLevelXP - profile.xp;
   }, [profile.level, profile.xp]);

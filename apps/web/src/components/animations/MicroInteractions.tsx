@@ -1,4 +1,4 @@
-import React, { useState, useRef, useEffect } from 'react';
+import React, { useState, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface MicroInteractionsProps {
@@ -40,82 +40,6 @@ export const MicroInteractions: React.FC<MicroInteractionsProps> = ({ children }
       scale: 0.95,
       transition: {
         duration: 0.1
-      }
-    }
-  };
-
-  // Animações de notificação
-  const notificationVariants = {
-    hidden: {
-      opacity: 0,
-      y: -20,
-      scale: 0.8
-    },
-    visible: {
-      opacity: 1,
-      y: 0,
-      scale: 1,
-      transition: {
-        duration: 0.3,
-        ease: "easeOut" as const
-      }
-    },
-    exit: {
-      opacity: 0,
-      y: -20,
-      scale: 0.8,
-      transition: {
-        duration: 0.2
-      }
-    }
-  };
-
-  // Animações de loading
-  const spinnerVariants = {
-    animate: {
-      rotate: 360,
-      transition: {
-        duration: 1,
-        repeat: Infinity,
-        ease: "linear" as const
-      }
-    }
-  };
-
-  // Animações de skeleton
-  const skeletonVariants = {
-    animate: {
-      opacity: [0.5, 1, 0.5],
-      transition: {
-        duration: 1.5,
-        repeat: Infinity,
-        ease: "easeInOut" as const
-      }
-    }
-  };
-
-  // Animações de feedback
-  const feedbackVariants = {
-    hidden: {
-      opacity: 0,
-      scale: 0.8,
-      y: 20
-    },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      y: 0,
-      transition: {
-        duration: 0.4,
-        ease: "easeOut" as const
-      }
-    },
-    exit: {
-      opacity: 0,
-      scale: 0.8,
-      y: -20,
-      transition: {
-        duration: 0.2
       }
     }
   };

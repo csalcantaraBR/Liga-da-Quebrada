@@ -1,6 +1,6 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
 import { mockMatchmakingServer } from '../game/matchmaking';
-import { MatchmakingState, MatchmakingStatus, MatchmakingEvent } from '../game/types';
+import { MatchmakingState, MatchmakingEvent } from '../game/types';
 
 export interface UseMatchmakingReturn extends MatchmakingState {
   startSearch: (playerId: string) => Promise<void>;

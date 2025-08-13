@@ -1,4 +1,4 @@
-import { MatchmakingState, MatchmakingEvent, MatchmakingConfig } from './types';
+import { MatchmakingEvent, MatchmakingConfig } from './types';
 
 // Mock do servidor de matchmaking
 export class MockMatchmakingServer {

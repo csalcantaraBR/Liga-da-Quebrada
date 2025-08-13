@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDeck } from '../hooks/useDeck';
-import { Card, Faction } from '../game/types';
+import { Faction } from '../game/types';
 
 interface DeckBuilderProps {
   className?: string;
@@ -33,7 +33,6 @@ export function DeckBuilder({ className = '' }: DeckBuilderProps) {
     availableFactions,
     selectFaction,
     clearFaction,
-    addCard,
     removeCard,
     generateDeck,
     clearDeck,

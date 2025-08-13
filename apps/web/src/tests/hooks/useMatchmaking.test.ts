@@ -2,7 +2,7 @@ import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { renderHook, act } from '@testing-library/react';
 import { useMatchmaking } from '../../hooks/useMatchmaking';
 import { mockMatchmakingServer } from '../../game/matchmaking';
-import { MatchmakingStatus } from '../../game/types';
+
 
 // Mock do servidor
 vi.mock('../../game/matchmaking', () => ({

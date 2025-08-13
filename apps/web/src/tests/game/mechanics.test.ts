@@ -113,7 +113,6 @@ describe('Game Mechanics', () => {
   describe('Turn Management', () => {
     it('should end turn correctly', () => {
       const initialTurn = gameState.currentTurn;
-      const initialRound = gameState.currentRound;
       
       const updatedState = endTurn(gameState);
       

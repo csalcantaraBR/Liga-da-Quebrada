@@ -1,4 +1,4 @@
-import { describe, it, expect, beforeEach } from 'vitest';
+import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { PageTransitions } from '../../components/animations/PageTransitions';
 
@@ -45,8 +45,6 @@ describe('PageTransitions', () => {
           <div data-testid="page-content">Conteúdo da página</div>
         </PageTransitions>
       );
-      
-      const pageElement = screen.getByTestId('page-transition');
       
       // Simula saída da página aplicando a classe de saída
       rerender(

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 interface PageTransitionsProps {
@@ -16,7 +16,7 @@ export const PageTransitions: React.FC<PageTransitionsProps> = ({
   hasError = false,
   onAnimationComplete
 }) => {
-  const [isExiting, setIsExiting] = useState(false);
+
 
   // Animações de entrada específicas por página
   const pageEntranceVariants = {
@@ -78,17 +78,7 @@ export const PageTransitions: React.FC<PageTransitionsProps> = ({
     }
   };
 
-  // Animações de saída
-  const exitVariants = {
-    exit: {
-      opacity: 0,
-      y: -50,
-      transition: {
-        duration: 0.3,
-        ease: "easeIn" as const
-      }
-    }
-  };
+
 
   // Animações de loading
   const loadingVariants = {
@@ -144,10 +134,7 @@ export const PageTransitions: React.FC<PageTransitionsProps> = ({
     }
   };
 
-  // Simula saída da página
-  const handleUnmount = () => {
-    setIsExiting(true);
-  };
+
 
   return (
     <div className="page-transitions-container">
@@ -198,7 +185,7 @@ export const PageTransitions: React.FC<PageTransitionsProps> = ({
           page-transition
           page-entrance-animation
           ${pageType}-entrance
-          ${isExiting ? 'page-exit-animation' : ''}
+  
         `}
         variants={pageEntranceVariants[pageType]}
         initial="hidden"
