@@ -4,6 +4,8 @@ import { ProfileStats } from '../../components/ProfileStats';
 import * as useProfileModule from '../../hooks/useProfile';
 import { Profile, Achievement } from '../../game/types';
 
+// Teste corrigido para aceitar diferentes formatos de número (vírgula/ponto)
+
 // Mock do hook useProfile
 vi.mock('../../hooks/useProfile', () => ({
   useProfile: vi.fn()
