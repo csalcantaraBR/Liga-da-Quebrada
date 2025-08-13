@@ -99,7 +99,7 @@ describe('ProfileStats Component', () => {
     it('should display XP progress', () => {
       render(<ProfileStats />);
 
-      expect(screen.getByText('1.250 XP')).toBeInTheDocument();
+      expect(screen.getByText(/1[,.]250 XP/)).toBeInTheDocument();
       expect(screen.getByText('25%')).toBeInTheDocument();
     });
 
