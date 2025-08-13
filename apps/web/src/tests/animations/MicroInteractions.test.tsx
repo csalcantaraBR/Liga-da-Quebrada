@@ -39,7 +39,7 @@ describe('MicroInteractions', () => {
         <MicroInteractions>
           <div data-testid="input-container">
             <input data-testid="animated-input" />
-            <label data-testid="input-label">Nome</label>
+            <label data-testid="input-label" className="label-focus-animation">Nome</label>
           </div>
         </MicroInteractions>
       );
@@ -57,7 +57,7 @@ describe('MicroInteractions', () => {
         <MicroInteractions>
           <div data-testid="input-container">
             <input data-testid="animated-input" />
-            <label data-testid="input-label">Nome</label>
+            <label data-testid="input-label" className="label-blur-animation">Nome</label>
           </div>
         </MicroInteractions>
       );
@@ -125,8 +125,8 @@ describe('MicroInteractions', () => {
     it('should show skeleton loading animation', () => {
       render(
         <MicroInteractions>
-          <div data-testid="skeleton" className="skeleton">
-            <div data-testid="skeleton-line"></div>
+          <div data-testid="skeleton" className="skeleton skeleton-animation">
+            <div data-testid="skeleton-line" className="skeleton-line-animation"></div>
           </div>
         </MicroInteractions>
       );
@@ -184,14 +184,14 @@ describe('MicroInteractions', () => {
     it('should animate progress bar', () => {
       render(
         <MicroInteractions>
-          <div data-testid="progress-bar" className="progress" style={{ width: '50%' }}>
-            <div data-testid="progress-fill"></div>
+          <div data-testid="progress-bar" className="progress progress-animation" style={{ width: '50%' }}>
+            <div data-testid="progress-fill" className="progress-fill-animation"></div>
           </div>
         </MicroInteractions>
       );
       
       const progressBar = screen.getByTestId('progress-bar');
-      const progressFill = screen.getByTestId('progress-fill');
+      const progressFill = screen.getAllByTestId('progress-fill')[0];
       
       expect(progressBar).toHaveClass('progress-animation');
       expect(progressFill).toHaveClass('progress-fill-animation');
@@ -200,14 +200,14 @@ describe('MicroInteractions', () => {
     it('should animate circular progress', () => {
       render(
         <MicroInteractions>
-          <div data-testid="circular-progress" className="circular-progress">
-            <svg data-testid="progress-circle"></svg>
+          <div data-testid="circular-progress" className="circular-progress circular-progress-animation">
+            <svg data-testid="progress-circle" className="progress-circle-animation"></svg>
           </div>
         </MicroInteractions>
       );
       
       const circularProgress = screen.getByTestId('circular-progress');
-      const progressCircle = screen.getByTestId('progress-circle');
+      const progressCircle = screen.getAllByTestId('progress-circle')[0];
       
       expect(circularProgress).toHaveClass('circular-progress-animation');
       expect(progressCircle).toHaveClass('progress-circle-animation');

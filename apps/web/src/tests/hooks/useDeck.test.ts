@@ -38,14 +38,14 @@ describe('useDeck Hook', () => {
     
     // Configurar mocks padrão
     const mockCards = [
-      { id: 'card-1', name: 'Card 1', faction: 'roda-de-ginga', power: 5, energy: 3, effects: [], keywords: [] },
-      { id: 'card-2', name: 'Card 2', faction: 'roda-de-ginga', power: 4, energy: 2, effects: [], keywords: [] },
-      { id: 'card-3', name: 'Card 3', faction: 'roda-de-ginga', power: 6, energy: 4, effects: [], keywords: [] },
-      { id: 'card-4', name: 'Card 4', faction: 'roda-de-ginga', power: 3, energy: 1, effects: [], keywords: [] },
-      { id: 'card-5', name: 'Card 5', faction: 'roda-de-ginga', power: 7, energy: 5, effects: [], keywords: [] },
-      { id: 'card-6', name: 'Card 6', faction: 'roda-de-ginga', power: 4, energy: 2, effects: [], keywords: [] },
-      { id: 'card-7', name: 'Card 7', faction: 'roda-de-ginga', power: 5, energy: 3, effects: [], keywords: [] },
-      { id: 'card-8', name: 'Card 8', faction: 'roda-de-ginga', power: 6, energy: 4, effects: [], keywords: [] }
+      { id: 'card-1', name: 'Card 1', faction: 'roda-de-ginga' as const, power: 5, energy: 3, effects: [], keywords: [] },
+      { id: 'card-2', name: 'Card 2', faction: 'roda-de-ginga' as const, power: 4, energy: 2, effects: [], keywords: [] },
+      { id: 'card-3', name: 'Card 3', faction: 'roda-de-ginga' as const, power: 6, energy: 4, effects: [], keywords: [] },
+      { id: 'card-4', name: 'Card 4', faction: 'roda-de-ginga' as const, power: 3, energy: 1, effects: [], keywords: [] },
+      { id: 'card-5', name: 'Card 5', faction: 'roda-de-ginga' as const, power: 7, energy: 5, effects: [], keywords: [] },
+      { id: 'card-6', name: 'Card 6', faction: 'roda-de-ginga' as const, power: 4, energy: 2, effects: [], keywords: [] },
+      { id: 'card-7', name: 'Card 7', faction: 'roda-de-ginga' as const, power: 5, energy: 3, effects: [], keywords: [] },
+      { id: 'card-8', name: 'Card 8', faction: 'roda-de-ginga' as const, power: 6, energy: 4, effects: [], keywords: [] }
     ];
     
     vi.mocked(cardsModule.generateBalancedDeck).mockReturnValue(mockCards);
@@ -189,7 +189,7 @@ describe('useDeck Hook', () => {
         result.current.generateDeck();
       });
 
-      expect(vi.mocked(cardsModule.generateBalancedDeck)).toHaveBeenCalledWith('roda-de-ginga', 8);
+      expect(vi.mocked(cardsModule.generateBalancedDeck)).toHaveBeenCalledWith('roda-de-ginga');
       expect(result.current.deck).toHaveLength(8);
       expect(result.current.deck.every(card => card.faction === 'roda-de-ginga')).toBe(true);
     });
@@ -241,7 +241,7 @@ describe('useDeck Hook', () => {
 
       const mixedCard: Card = {
         ...mockCard,
-        faction: 'motofrete-uniao'
+        faction: 'motofrete-uniao' as const
       };
 
       // Adicionar 8 cartas (7 da mesma facção + 1 diferente)

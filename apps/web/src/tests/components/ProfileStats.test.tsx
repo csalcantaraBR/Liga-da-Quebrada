@@ -61,7 +61,11 @@ describe('ProfileStats Component', () => {
     })),
     getFactionStatistics: vi.fn(() => ({
       'roda-de-ginga': { games: 10, wins: 7, losses: 2, draws: 1, winRate: 70 },
-      'motofrete-uniao': { games: 5, wins: 3, losses: 2, draws: 0, winRate: 60 }
+      'motofrete-uniao': { games: 5, wins: 3, losses: 2, draws: 0, winRate: 60 },
+      'crew-do-graffiti': { games: 0, wins: 0, losses: 0, draws: 0, winRate: 0 },
+      'bateria-central': { games: 0, wins: 0, losses: 0, draws: 0, winRate: 0 },
+      'guardioes-do-verde': { games: 0, wins: 0, losses: 0, draws: 0, winRate: 0 },
+      'vaqueiros-do-sertao': { games: 0, wins: 0, losses: 0, draws: 0, winRate: 0 }
     })),
     getRecentGames: vi.fn(() => []),
     resetProfile: vi.fn()

@@ -146,7 +146,7 @@ describe('Game Mechanics', () => {
         players: [
           { ...gameState.players[0], life: 5 },
           { ...gameState.players[1], life: 0 }
-        ]
+        ] as [Player, Player]
       };
       
       expect(checkWinCondition(modifiedState)).toBe('player1');
@@ -158,7 +158,7 @@ describe('Game Mechanics', () => {
         players: [
           { ...gameState.players[0], life: 0 },
           { ...gameState.players[1], life: 5 }
-        ]
+        ] as [Player, Player]
       };
       
       expect(checkWinCondition(modifiedState)).toBe('player2');
@@ -170,7 +170,7 @@ describe('Game Mechanics', () => {
         players: [
           { ...gameState.players[0], life: 0 },
           { ...gameState.players[1], life: 0 }
-        ]
+        ] as [Player, Player]
       };
       
       expect(checkWinCondition(modifiedState)).toBe('draw');
@@ -183,7 +183,7 @@ describe('Game Mechanics', () => {
         players: [
           { ...gameState.players[0], life: 10 },
           { ...gameState.players[1], life: 5 }
-        ]
+        ] as [Player, Player]
       };
       
       expect(checkWinCondition(modifiedState)).toBe('player1');
@@ -307,8 +307,8 @@ describe('Game Mechanics', () => {
       const player = {
         ...gameState.players[0],
         field: [
-          { id: '1', name: 'Card 1', faction: 'roda-de-ginga', power: 3, energy: 2, effects: [], keywords: [] },
-          { id: '2', name: 'Card 2', faction: 'roda-de-ginga', power: 5, energy: 3, effects: [], keywords: [] }
+          { id: '1', name: 'Card 1', faction: 'roda-de-ginga' as const, power: 3, energy: 2, effects: [], keywords: [] },
+          { id: '2', name: 'Card 2', faction: 'roda-de-ginga' as const, power: 5, energy: 3, effects: [], keywords: [] }
         ]
       };
       
@@ -356,7 +356,7 @@ describe('Game Mechanics', () => {
       // Update game state
       const updatedState = {
         ...gameState,
-        players: [playResult.player, playResult.opponent]
+        players: [playResult.player, playResult.opponent] as [Player, Player]
       };
       
       // End turn
@@ -373,7 +373,7 @@ describe('Game Mechanics', () => {
         players: [
           { ...gameState.players[0], life: 5 },
           { ...gameState.players[1], life: 0 }
-        ]
+        ] as [Player, Player]
       };
       
       const finalState = endTurn(modifiedState);

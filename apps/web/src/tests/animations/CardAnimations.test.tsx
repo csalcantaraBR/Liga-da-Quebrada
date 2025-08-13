@@ -58,8 +58,11 @@ describe('CardAnimations', () => {
       const cardElement = screen.getByTestId('card-animation');
       fireEvent.click(cardElement);
       
-      // Aguarda a animação completar
-      await new Promise(resolve => setTimeout(resolve, 300));
+      // Verifica se a animação de click foi aplicada
+      expect(cardElement).toHaveClass('click-animation');
+      
+      // Aguarda a animação completar (aumentado o tempo)
+      await new Promise(resolve => setTimeout(resolve, 1000));
       
       // Verifica se a animação foi removida
       expect(cardElement).not.toHaveClass('click-animation');

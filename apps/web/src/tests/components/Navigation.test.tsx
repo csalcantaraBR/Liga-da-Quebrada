@@ -18,7 +18,10 @@ describe('Navigation Component', () => {
     currentScreen: 'home' as const,
     navigate: mockNavigate,
     goBack: mockGoBack,
-    canGoBack: mockCanGoBack
+    canGoBack: mockCanGoBack,
+    history: [],
+    params: {},
+    replace: vi.fn()
   };
 
   beforeEach(() => {
