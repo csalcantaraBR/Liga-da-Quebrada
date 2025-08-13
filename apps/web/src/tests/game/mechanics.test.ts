@@ -337,8 +337,8 @@ describe('Game Mechanics', () => {
       
       const finishedState = {
         ...gameState,
-        gamePhase: 'finished',
-        winner: 'player1'
+        gamePhase: 'finished' as const,
+        winner: 'player1' as const
       };
       expect(canGameContinue(finishedState)).toBe(false);
     });
